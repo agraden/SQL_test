@@ -9,10 +9,15 @@ namespace SQLTest.Pages
     {
         public List<Product> Products;
 
+        private readonly IProductService _productService;
+        public IndexModel(IProductService productService)
+        {
+            _productService = productService;
+        }
+
         public void OnGet()
         {
-            ProductService productService = new ProductService();
-            Products = productService.GetProducts();
+            Products = _productService.GetProducts();
         }
     }
 }
